@@ -69,5 +69,32 @@ The GOROOT environment variable point to Go's code, compiler and tooling locatio
 	GOROOT="/usr/local/go"
 ```
 
+## Import PATH
 
+A useful library is treated as Package in go, just like package in python. Inorder to use a package it needs to be imported into our code.
 
+for eg. 
+
+```
+import fmt
+```
+
+The import path is string that uniquely identifies a package. A package's import path corresponds to its location inside a workspace or in a remote repo.
+
+The package from standard library are given a short name "fmt" or "net/http". 
+Since the path uniquely identifies the package we need to make sure that the name we give to our package should never collide with the name of a standard library. 
+
+One thing we can do for this is put all our source code in gitrepo we are going to publish
+
+```
+home
+└──<linuxusername>
+    └── dev
+        └── go
+            └── src
+                └── github.com
+                    └── <username>
+                        └── hello
+                            └── hello_world.go
+
+```
