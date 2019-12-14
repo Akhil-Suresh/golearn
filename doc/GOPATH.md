@@ -82,9 +82,12 @@ import fmt
 The import path is string that uniquely identifies a package. A package's import path corresponds to its location inside a workspace or in a remote repo.
 
 The package from standard library are given a short name "fmt" or "net/http". 
-Since the path uniquely identifies the package we need to make sure that the name we give to our package should never collide with the name of a standard library. 
 
-One thing we can do for this is put all our source code in gitrepo we are going to publish
+__Since the path uniquely identifies the package we need to make sure that the name we give to our package should never collide with the name of a standard library.__ 
+
+One thing we can do for this is create a folder structure with name gitrepo(github/bitbucket/gitlab/...) we publish our code.
+
+An e.g of folder structure
 
 ```
 home
