@@ -50,6 +50,25 @@ func main() {
 }
 ```
 
+## Initializing variable without value
+
+Unlike other languages in go if we initialize a variable without value. It gets defaulted to 0
+
+```go
+package main
+import "fmt"
+func main() {
+    var i int
+    fmt.Printf("%v, %T\n", i, i)  //OUTPUTS: 0, int
+
+    var j string
+    fmt.Printf("%v, %T\n", j, j)  //OUTPUTS: , string
+
+    var k bool
+    fmt.Printf("%v, %T\n", k, k)  //OUTPUTS: false, bool
+}
+```
+
 ## Variable shadowing
 
 Suppose we initialize a variable at package level. The we reinitialize it in our function. In that case the variable in our local scope will be having more priority.
@@ -134,7 +153,7 @@ func main() {
 
 This is because of difference in working of string. Sting is treated as alias of string of bytes
 
-In order to achieve proper result we can use of package __strconv__.
+In order to achieve proper result we can make use of package __strconv__.
 
 ```go
 import (
