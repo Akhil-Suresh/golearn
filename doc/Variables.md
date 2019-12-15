@@ -119,7 +119,7 @@ func main(){
 
 ### Typecasting to string
 
-typecasting to string can't be acheived that eaisly
+typecasting to string can't be achieved that easily
 
 ```go
 func main() {
@@ -134,7 +134,7 @@ func main() {
 
 This is because of difference in working of string. Sting is treated as alias of string of bytes
 
-In order to achieve proper result we can use o package __strconv__.
+In order to achieve proper result we can use of package __strconv__.
 
 ```go
 import (
