@@ -9,3 +9,4 @@ This is basically for me to refer back in future if needed.
 3. [Hello World](doc/HelloWorld.md)
 4. [Variable](doc/Variables.md)
 5. [Type](doc/Type.md)
+6. [Operation](doc/Operations.md)
