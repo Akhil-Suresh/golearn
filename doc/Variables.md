@@ -169,3 +169,7 @@ func main() {
 }
 
 ```
+
+## Blank Identifier  _ (Underscore)
+
+The real use of Blank Identifier comes when a function returns multiple values, but we need only a few values and want to discard some values. Basically, it tells the compiler that this variable is not needed and ignored it without any error. It hides the variable’s values and makes the program readable. So whenever you will assign a value to Blank Identifier it becomes unusable.

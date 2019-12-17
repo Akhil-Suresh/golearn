@@ -50,6 +50,18 @@ func main() {
 
 ```
 
+One of the very intresting fact about bit shifting is that 
+A single left shift multiplies a binary number by 2
+
+```
+0010 is 2
+0100 is 4
+```
+
+So five left shift of a value 3 means
+3 * 2^5
+
+
 ## Complex Numbers
 
 ```go

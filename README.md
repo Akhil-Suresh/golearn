@@ -17,3 +17,4 @@ Basically doing above thing is useless, but if you are beginner and needs to see
 4. [Variable](doc/Variables.md)
 5. [Type](doc/Type.md)
 6. [Operation](doc/Operations.md)
+7. [Constants](doc/Constants.md)

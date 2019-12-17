@@ -9,7 +9,8 @@ func main() {
 	variable()
 	fmt.Println("------- Variable Shadowing -----")
 	variableShadowing()
-	fmt.Println("------- Type --------")
+	fmt.Println("------- Type -------------------")
 	typeprint()
-
+	fmt.Println("------- Constant ---------------")
+	constants_learn()
 }
