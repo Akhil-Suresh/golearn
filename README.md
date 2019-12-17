@@ -6,6 +6,7 @@ So If you need this project you can simply do
 ```sh
 go get github.com/Akhil-Suresh/golearn/learngo
 ```
+Basically doing above thing is useless, but if you are beginner and needs to see what happens, you make utilise this.
 
 
 ## STEPS
