@@ -1,6 +1,12 @@
 # Go Tutorial
 
 This is basically for me to refer back in future if needed.
+So If you need this project you can simply do
+
+```sh
+go get github.com/Akhil-Suresh/golearn/learngo
+```
+
 
 ## STEPS
 
