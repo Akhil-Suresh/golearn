@@ -181,5 +181,100 @@ OUTPUTS
 */
 ```
 It gathers the information together that are related to one concept, in a very flexible way.
-
 So any types of data can be mixed together using struct. All other collections had to have a consistent datatype, unlike struct.
+
+Also we can initialize struct without value to one of its members as well like
+```go
+package main
+
+import "fmt"
+
+type Employee struct {
+	id int
+	name string
+	department []string
+}
+
+
+func main() {
+  anEmployee := Employee{
+    id: 1001,
+    department: []string{
+      "Open Source",
+      "Enterprise",
+    },
+  }
+  fmt.Println(anEmployee)
+ 
+}
+
+/*
+OUTPUTS
+{1001  [Open Source Enterprise]}
+*/
+```
+
+The variable inside can be accessed using dot syntax
+
+```go
+fmt.Println(anEmployee.id)
+1001
+```
+
+
+## Anonymous Struct
+
+```go
+package main
+
+import "fmt"
+
+
+func main() {
+	anEmployee := struct{name string}{name: "Akhil"}
+	fmt.Println(anEmployee) 
+}
+```
+
+
+Unlike maps structs are value type.
+
+
+# Embedding
+
+golang doesn't have oop concepts. It uses an other concept called composition.
+
+```go
+package main
+
+import "fmt"
+
+type Animal struct {
+  Name    string
+  Origin  string
+}
+
+type Bird struct {
+  Animal
+  SpeedKPH  float32
+  CanFly    bool
+}
+
+func main(){
+  fmt.Println("")
+  b := Bird{}
+  b.Name = "Ostrich"
+  b.Origin = "India"
+  b.SpeedKPH = 60
+  b.CanFly = false
+  fmt.Println(b)
+}
+
+/*
+  OUTPUT
+  {{Ostrich India} 60 false}
+*/
+```
+
+# Tags
+
