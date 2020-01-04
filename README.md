@@ -18,3 +18,7 @@ Basically doing above thing is useless, but if you are beginner and needs to see
 5. [Type](doc/Type.md)
 6. [Operation](doc/Operations.md)
 7. [Constants](doc/Constants.md)
+8. [Arrays and Slices](doc/ArraysAndSlices.md)
+9. [Maps and Structs](docs/MapsAndStructs.md)
+10. [If and Switch](docs/ifAndSwitch.md)
+11. [Loops](docs/loops.md)

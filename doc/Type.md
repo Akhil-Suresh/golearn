@@ -86,6 +86,9 @@ func main() {
     b := []byte(s)
     fmt.Printf("%v, %T", b, b)
 }
+
+// OUTPUTS
+// [73 32 97 109 32 97 32 115 116 114 105 110 103], []uint8
 ```
 
 This feature in go can be utilized when we are sending data from server to another server, or to a filesystem.
@@ -105,5 +108,5 @@ func main() {
 }
 ```
 
-So double quotes and single quotes matters in go code. Single quotes string are treated as rune. Unline a 
+So double quotes and single quotes matters in go code. Single quotes string are treated as rune. Unlike a 
 string literal which is a byte. The rune is of type int32.

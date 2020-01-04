@@ -33,7 +33,7 @@ package main
 import "fmt"
 
 func main() {
-  shapeEdgeMap = make(map[string]int)
+  var shapeEdgeMap = make(map[string]int)
   shapeEdgeMap = map[string]int{
     "Triangle": 3,
     "Square":   4,
