@@ -67,8 +67,7 @@ func main() {
   }
   fmt.Println(shapeEdgeMap)
   shapeEdgeMap["Octagon"] = 8
-  fmt.Println(shapeEdgeMap)
-  
+  fmt.Println(shapeEdgeMap)  
 }
 
 /*
@@ -221,7 +220,6 @@ fmt.Println(anEmployee.id)
 1001
 ```
 
-
 ## Anonymous Struct
 
 ```go
@@ -231,7 +229,7 @@ import "fmt"
 
 
 func main() {
-	anEmployee := struct{name string}{name: "Akhil"}
+  anEmployee := struct{name string}{name: "Akhil"}
 	fmt.Println(anEmployee) 
 }
 ```
@@ -243,6 +241,7 @@ Unlike maps structs are value type.
 # Embedding
 
 golang doesn't have oop concepts. It uses an other concept called composition.
+Composition basically means adding a struct to another struct not as a name field so that the named fields of struct can be accessed from inside
 
 ```go
 package main
@@ -278,3 +277,45 @@ func main(){
 
 # Tags
 
+Tags are used to describe some specific information about the struct, For example incase of form fields we may need to have to describe field called Name that is required and have a maximum length of 250. This can be acheived by tags as 
+
+```go
+type Animal struct {
+  Name string `required max:"100"`
+  Origin string
+}
+```
+
+Space delimitted subtags are used. As we have defined tag. To get the tag details
+We need to use go's __reflect__ package.
+
+It can be acheived as
+
+```go
+package main
+
+import (
+  "fmt"
+  "reflect"
+)
+
+type Animal struct {
+  Name string `required:"True" max:"100"`
+  Origin string
+}
+
+
+func main() {
+  a := reflect.TypeOf(Animal{})
+  field, _ := a.FieldByName("Name")
+  fmt.Println(field.Tag)
+}
+
+/*
+OUTPUT
+required:"True" max:"100"
+*/
+
+```
+
+All tags do is to return a string of text. What to do with the data is figured out by the validation library.
