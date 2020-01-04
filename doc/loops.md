@@ -237,3 +237,34 @@ func main() {
 
 ## Working with collections - range
 
+```go
+package main
+
+import (
+ "fmt"
+)
+
+func main() {
+
+    i := []int{1, 2, 3, 4}
+    for key, value := range i {
+        fmt.Println(key, value)
+    }
+    printMap()
+}
+
+func printMap() {
+  var shapeEdgeMap = make(map[string]int)
+  shapeEdgeMap = map[string]int{
+    "Triangle": 3,
+    "Square":   4,
+    "Pentagon": 5,
+    "Hexagon":  6,
+    "Heptagon": 7,
+  }
+  for key, value := range shapeEdgeMap {
+    fmt.Println(key, value)
+  }
+
+}
+```
