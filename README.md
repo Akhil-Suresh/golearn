@@ -24,4 +24,5 @@ Basically doing above thing is useless, but if you are beginner and needs to see
 11. [Loops](doc/loops.md)
 12. [Defer, Panic and Recover](doc/deferPanicRecover.md)
 13. [Pointers](doc/pointers.md)
+14. [Functions](doc/functions.md)
 
