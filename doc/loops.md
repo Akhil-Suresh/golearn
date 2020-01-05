@@ -267,4 +267,17 @@ func printMap() {
   }
 
 }
+
+/*
+    OUTPUTS
+    0 1
+    1 2
+    2 3
+    3 4
+    Triangle 3
+    Square 4
+    Pentagon 5
+    Hexagon 6
+    Heptagon 7
+*/
 ```

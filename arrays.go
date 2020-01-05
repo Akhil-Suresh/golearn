@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {	
+func arrayIntro() {	
 	vechiles := [3]string{"car", "bus", "van"}	
 	fmt.Printf("Vechiles: %v \n", vechiles)
 

@@ -13,4 +13,6 @@ func main() {
 	typeprint()
 	fmt.Println("------- Constant ---------------")
 	constants_learn()
+	fmt.Println("--------- Defer ----------------")
+	deferCode()
 }
