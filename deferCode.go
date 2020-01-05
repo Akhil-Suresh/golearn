@@ -12,10 +12,12 @@ func deferCode(){
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer  res.Body.Close()
 	robots, err := ioutil.ReadAll(res.Body)
-	res.Body.Close()
+	
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%s", robots)
 }
+
