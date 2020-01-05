@@ -22,3 +22,6 @@ Basically doing above thing is useless, but if you are beginner and needs to see
 9. [Maps and Structs](doc/MapsAndStructs.md)
 10. [If and Switch](doc/ifAndSwitch.md)
 11. [Loops](doc/loops.md)
+12. [Defer, Panic and Recover](doc/deferPanicRecover.md)
+13. [Pointers](doc/pointers.md)
+
