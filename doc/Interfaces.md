@@ -61,8 +61,105 @@ func (cw ConsoleWriter) Write(data []byte) (int, error) {
 // Hello World!
 ```
 
-
 ## Naming Convention
 
-Obviously the name of the interface should represent what that interface is going to do for you. There is one special case, If you got single method interface, which are very common in the go lang then the convention is to name the interface with the method name + er. Like *Writer*
+Obviously the name of the interface should represent what that interface is going to do for you. There is one special case, If you got single method interface, which are very common in the go lang then the convention is to name the interface with the *method name* + *er*. Like *Writer*
+
+We used struct in the above example which is very common way to implement interface, But we don't need to. Any type that has a method associated with it can implement an interface.
+
+See the below example to understand this.
+
+```go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  myInt := IntCounter(0)
+  var counter Incrementer = &myInt
+  for i:=0; i<10;i++ {
+    fmt.Println(counter.Increment())
+  }
+}
+
+type Incrementer interface {
+  Increment() int
+}
+
+type IntCounter int
+
+func (ic *IntCounter) Increment() int {
+  *ic++
+  return int(*ic)
+}
+
+```
+
+## Composing Interfaces Together (Interface Embedding)
+
+Composing Interfaces Together is one of the powerful concept in golang. Its a key to scalability.
+We mentioned above that single method interfaces are very powerful and common in the golang because they define a very specific behavior.
+
+The composing of Interfaces comes in situation where we need more that one method and we can't decompose the interfaces down.
+
+```go
+package main
+
+import (
+  "fmt"
+)
+
+type Area interface {
+    area() (float64, error)
+}
+
+type Perimeter interface {
+    perimeter() (float64, error)
+}
+
+type Shape interface {
+    Area
+    Perimeter
+}
+
+type Rectangle struct {
+    length  float64
+    breadth float64
+}
+
+func (rect *Rectangle) area() (float64, error){
+    return rect.length * rect.breadth, nil
+}
+
+func (rect *Rectangle) perimeter() (float64, error){
+    perimeter := 2 * (rect.length + rect.breadth)
+    return perimeter, nil
+}
+
+func main() {
+  var shape Shape = NewRectangle()
+  area, _ := shape.area()
+
+  fmt.Println(area)
+  perimeter, _ := shape.perimeter()
+  fmt.Println(perimeter)
+}
+
+
+func NewRectangle() *Rectangle {
+  return &Rectangle{
+    length: 2.0,
+    breadth: 3.0,
+  }
+}
+
+
+// OUTPUTS
+// 6
+// 10
+```
+
+# Empty interface
 
