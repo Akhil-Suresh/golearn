@@ -50,19 +50,20 @@ func main() {
 }
 ```
 
-String can be treated like an array, or a collection of letters. That way we can get value at any index position from the string starting from 0
+**OUTPUTS**
+```
+I am a string, string
+```
 
-ie.
-
-```go
+String can be treated like an array, or a collection of letters. That way we can get value of string at any index position starting from 0. ie.
+```go 
 fmt.Printf("%v, %T", s[5], s[5])    // OUTPUTS: 97, unit8
 ```
 
-Yes the above code is lil' confusing and here is its explanation. The string is treated as array of bytes and is immutable.
-We can get back the value by Type casting it.
+Yes the above code is little confusing and here is its explanation. The string is treated as array of bytes and is immutable. We can get back the value by **type casting** it.
 
 ```go
-string(s[5])
+string(s[5])    // OUTPUTS: a
 ```
 
 Strings can be concatenated together by plus sign.
@@ -86,15 +87,17 @@ func main() {
     b := []byte(s)
     fmt.Printf("%v, %T", b, b)
 }
+```
 
-// OUTPUTS
+**OUTPUTS**
+```
 // [73 32 97 109 32 97 32 115 116 114 105 110 103], []uint8
 ```
 
 This feature in go can be utilized when we are sending data from server to another server, or to a filesystem.
 So that we can less worry about line endings and other string related issues
 
-### Rune literal
+### Rune literal (Single quote Vs Double quote)
 
 ```go
 package main
@@ -108,5 +111,14 @@ func main() {
 }
 ```
 
-So double quotes and single quotes matters in go code. Single quotes string are treated as rune. Unlike a 
-string literal which is a byte. The rune is of type int32.
+**OUTPUTS**
+```
+97, int32
+122, int32
+```
+
+
+**So double quotes and single quotes matters in go code**. 
+Single quotes string are treated as **rune**. 
+
+**Unlike a string literal which is a byte. The rune is of type int32.**

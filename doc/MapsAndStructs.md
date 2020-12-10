@@ -25,7 +25,7 @@ func main() {
 */
 ```
 
-We can make use of the __make__ keyword
+We can make use of the **make** keyword
 
 ```go
 package main

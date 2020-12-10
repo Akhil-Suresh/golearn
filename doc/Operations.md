@@ -20,12 +20,20 @@ func main() {
 }
 ```
 
+**OUTPUTS**
+```
+17
+3
+70
+1
+3
+```
+
 Just like other languages we can't do operations on different variable types. 
 
 e.g:
-    float and int operations,
-    unsignedint and signedint operation,
-    etc...
+* float and int operations, 
+* unsignedint and signedint operation, etc...
 
 Typecasting doesn't work on the go. Meaning if division is done between two integers, it doesn't be converted to float.
 
@@ -59,14 +67,14 @@ A single left shift multiplies a binary number by 2
 ```
 
 So five left shift of a value 3 means
-3 * 2^5
+3 x 2^5^
 
 
 ## Complex Numbers
 
 ```go
 var n complex64 = 2i        // Recognized as 0 + 2i
-fmt.Printf("%v, %T\n", n, n)
+fmt.Printf("%v, %T\n", n, n) // OUTPUTS: (0+2i), complex64
 ```
 
 To get the real part and imaginary part we can use `real` and `imag` functions

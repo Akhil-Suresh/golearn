@@ -154,11 +154,12 @@ func main() {
 
     for i := 1; i<10; i++ {
         for j:= 1; j <= i; j++ {
-        if i == 5 {
-            break
-        }
+            if i == 5 {
+                break
+            }
             fmt.Printf("*")
         }
+        
         fmt.Printf("\n")
     }
 }
@@ -176,7 +177,7 @@ func main() {
     *********
 */
 ```
-as we can see, We clearly needed to break out of the code when iteration reached value 5 but what happened is not expected result.
+as we can see, We clearly needed to break out of the code when iteration reached value 5 but what happened is not expected.
 
 This can be acheived by
 
@@ -235,6 +236,15 @@ func main() {
 
 ```
 
+**OUTPUTS**
+```
+1
+3
+5
+7
+9
+```
+
 ## Working with collections - range
 
 ```go
@@ -253,9 +263,8 @@ func main() {
     printMap()
 }
 
-func printMap() {
-  var shapeEdgeMap = make(map[string]int)
-  shapeEdgeMap = map[string]int{
+func printMap() {  
+  shapeEdgeMap := map[string]int{
     "Triangle": 3,
     "Square":   4,
     "Pentagon": 5,

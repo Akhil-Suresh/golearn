@@ -175,7 +175,11 @@ So what you guess the output of the above code will be?
 
 See the defer will get executed just before the panic got raised.
 
-So the order here is that first `main function` then `defer statement` then `panic` that occur, then the return value
+So the order of execution is 
+1. ***main function***
+2. ***defer statement***
+3. ***panic***
+4. ***return value***
 
 So why is this important? Well this is important because the defer statement that are going to close the resources are going to succeed even if the execution is going to panic. So if somewhere up the call stack if we recover from the panic we don't have to worry about the resources being left out there and left open
 

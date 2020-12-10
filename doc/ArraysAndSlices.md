@@ -231,6 +231,8 @@ func main() {
 
 ### Appending data to an array
 
+Once a slice is created it can grow dynamically. You can check at the below program and see how the size of the underlying array get increased. The value of **cap** shows the size of the underlying array.
+
 
 ```go
 package main
@@ -258,4 +260,23 @@ func main() {
   fmt.Printf("Length: %v\n", len(a))
   fmt.Printf("Capacity: %v\n", cap(a))
 }
+```
+
+**OUTPUTS**
+```
+[]
+Length: 0
+Capacity: 0
+
+[1]
+Length: 1
+Capacity: 1
+
+[1 2 3 4 5]
+Length: 5
+Capacity: 6
+
+[1 2 3 4 5 6 7 8 9]
+Length: 9
+Capacity: 12
 ```

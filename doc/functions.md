@@ -223,7 +223,9 @@ func sum(values ...int) int {
 
 ```
 
+## Returning pointer
 The other feature go has is the ability to return a local variable as pointer.
+
 
 ```go
 package main

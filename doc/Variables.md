@@ -1,29 +1,29 @@
 # Variables
 
-There are three main ways to declare a variable inside go
+There are mainly three ways to declare a variable inside go
 
-## Declare variable by type
+1. **Declare variable by type**
 
-```go
-var i int
-i = 5
-```
+    ```go
+    var i int
+    i = 5
+    ```
 
-## Declaring variable and assigning
+2. **Declaring and assigning variable in single line**
 
-```go
-var i int = 7
-```
+    ```go
+    var i int = 7
+    ```
 
-## Variable type auto by compiler
+3. **Compiler auto detect variable type**
 
-```go
-i := 10
-```
+    ```go
+    i := 10
+    ```
 
 ## Declaring variable in package level
 
-While declaring variable at package level, we can't let compiler figure out the type of variable. So we need to stick with second way of declaring variable.
+We can also declare at package level meaning outside main function.
 
 ```go
 package main
@@ -34,6 +34,9 @@ func main() {
 
 }
 ```
+**Note:** 
+: *While declaring variable at package level, we can't let compiler figure out the type of variable. So we can stick with second way of declaring variable.*
+
 
 ## Declaring variable as block at package level
 
@@ -52,7 +55,7 @@ func main() {
 
 ## Initializing variable without value
 
-Unlike other languages in go if we initialize a variable without value. It gets defaulted to 0
+Unlike other languages in go if we initialize a variable without value. It gets defaulted to 0. For instance in C the value will be a random integer.
 
 ```go
 package main
@@ -69,6 +72,9 @@ func main() {
 }
 ```
 
+## Unused variables :skull_and_crossbones:
+***If there is unused variable in go, When the code gets compiled, Its gonna throw an error.***
+
 ## Variable shadowing
 
 Suppose we initialize a variable at package level. The we reinitialize it in our function. In that case the variable in our local scope will be having more priority.
@@ -76,48 +82,34 @@ Suppose we initialize a variable at package level. The we reinitialize it in our
 ```go
 package main
 
-var testThis int 0
+var testThis int = 0
 
 func main() {
-    var testThis int 1
+    var testThis int = 1
     fmt.Println(testThis)
 }
 
 ```
 
-The above line of code print 1
-
-But compiler gives an error if we try to reinitialize it using compiler auto detect feature
-
-```go
-package main
-
-var testThis int 0
-
-func main () {
-    testThis := 1
-}
-
+**OUTPUTS**
 ```
-
-## Beware of Unused variables
-
-If there is unused variable in go, When the code gets compiled, Its gonna throw an error.
+1
+```
 
 ## Some naming conventions
 
 * When you declare a variable at package level try to use upper case
 
-```go
-var CLASSNAME string
-```
+    ```go
+    var CLASSNAME string
+    ```
 
 * When using acronym use caps
 
-```go
-var thisURL = "https://www.google.com"
-var thisHTTP = "https://www.youtube.com"
-```
+    ```go
+    var thisURL = "https://www.google.com"
+    var thisHTTP = "https://www.youtube.com"
+    ```
 
 ## Typecasting
 
@@ -138,7 +130,7 @@ func main(){
 
 ### Typecasting to string
 
-typecasting to string can't be achieved that easily
+Typecasting to string can't be achieved that easily
 
 ```go
 func main() {
@@ -172,4 +164,4 @@ func main() {
 
 ## Blank Identifier  _ (Underscore)
 
-The real use of Blank Identifier comes when a function returns multiple values, but we need only a few values and want to discard some values. Basically, it tells the compiler that this variable is not needed and ignored it without any error. It hides the variable’s values and makes the program readable. So whenever you will assign a value to Blank Identifier it becomes unusable.
+The real use of *Blank Identifier* comes when a function returns multiple values, but we need only a few values and want to discard some values. Basically it tells the compiler that this variable is not needed and ignore it without any error. It hides the variable’s values and makes the program readable. **So whenever you will assign a value to Blank Identifier it becomes unusable.**

@@ -1,28 +1,14 @@
 # Go Tutorial
 
-This is basically for me to refer back in future if needed.
-So If you need this project you can simply do
+This go tutorial helps you to undertstand basics of golang.
+
+If you need to get these codes in your local (*so that you can tryout on your own*) you can just do
 
 ```sh
-go get github.com/Akhil-Suresh/golearn/learngo
+go get github.com/Akhil-Suresh/golearn
 ```
-Basically doing above thing is useless, but if you are beginner and needs to see what happens, you make utilise this.
+so that you can simply save some typing ;)
 
-
-## STEPS
-
-1. [Installation](doc/Installation.md)
-2. [Go Path](doc/GOPATH.md)
-3. [Hello World](doc/HelloWorld.md)
-4. [Variable](doc/Variables.md)
-5. [Type](doc/Type.md)
-6. [Operation](doc/Operations.md)
-7. [Constants](doc/Constants.md)
-8. [Arrays and Slices](doc/ArraysAndSlices.md)
-9. [Maps and Structs](doc/MapsAndStructs.md)
-10. [If and Switch](doc/ifAndSwitch.md)
-11. [Loops](doc/loops.md)
-12. [Defer, Panic and Recover](doc/deferPanicRecover.md)
-13. [Pointers](doc/pointers.md)
-14. [Functions](doc/functions.md)
+## Read the tutorials section for more..
+In order to go to tutorial [Click me!](doc/README.md)
 

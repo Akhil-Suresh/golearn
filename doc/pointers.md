@@ -4,7 +4,7 @@ Lets start very simple
 
 We said before that the variables inside go are treated as value types.
 
-So when we assign a value a to b, underneath the go is copying the value of a and assigning to b. So that both have seperate memory location. So if we change one the other is going to be changed.
+So when we assign a value a to b, underneath the go is copying the value of a and assigning to b. So that both have seperate memory location. So if we change one the other is not going to be changed.
 
 This can be verified by __address of__ __&__ operator.
 

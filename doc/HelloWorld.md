@@ -1,9 +1,9 @@
 ## Hello World
 
 We know that the first program that we write in any language will be an Hello World Program.
-So I'm not breaking any tradition here. 
+So let's not break any tradition here. 
 
-I'm also writing the hello world program in go here.
+**The Hello World Program!**
 
 ```go
 package main
@@ -11,8 +11,11 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, 世界")
+	fmt.Println("Hello world!")
 }
 ```
 
-
+**OUTPUTS**
+```
+Hello World!
+```

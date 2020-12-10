@@ -2,36 +2,35 @@
 
 Interfaces are type just like struct or maps or...
 
-`type <name> interface`
+* Basics
+* Composing Interfaces
+* Type conversion
+  - The empty interface
+  - Type Switches
+* Implementing with values vs. Pointers
+* Best practices
 
-Interfaces don't describe data just like struct, But it defines behaviour. So instead of describing a bunch of data types inside writer interface below code, we actually going to store method definitions.
+# Basics
+
+Interfaces are type just like struct or other type aliases.
+
+Interface is defined as:
+
+`type <InterfaceName> interface`
+
+For instance:
 
 ```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	fmt.Println("Hello, playground")
-}
-
 type Writer inteface {
 	Write([]byte)(int, error)
 }
-
-type ConsoleWriter struct {}
-
-func (cw ConsoleWriter) Write(data []byte) (int, error) {
-	n, err := fmt.Println(string(data))
-	return n, err
-}
 ```
 
-These are the definition of the interface. So the obvious question running in our mind is that what is the use case of this?
+One thing we can notice in the definition is that unlike struct (where we define data types inside) we define methods here. So Basically what a interface does is that it defines a medium saying if you are going to use this interface for sure you can have this method within it.
 
-Well this can be seen as, Inside the main function we can define an interface and Its the responsibility of the interface to decide on what to do with the value we provide into the method.
+So basically interfaces don't describe data just like struct, But it defines behaviour. 
+
+Inside the main function we can define an interface and It is the responsibility of the interface to decide on what to do with the value we provide into the method.
 
 
 ```go
@@ -56,10 +55,14 @@ func (cw ConsoleWriter) Write(data []byte) (int, error) {
 	n, err := fmt.Println(string(data))
 	return n, err
 }
-
-//OUTPUT
-// Hello World!
 ```
+
+**OUTPUT**
+```
+Hello World!
+```
+
+Here we have created an interface **Writer** whose sole purpose is to have method **Write**. So inside main function we created a variable of type Writer and initialised a data holder(struct) for it. Then without knowing what the interface has under it sleeve we call its write method by passing in the value we got. So this can be utilised in surpisingly useful ways like by now we can implement TCPWriter or FileWriter or any on the dataholder(struct) we have.
 
 ## Naming Convention
 
@@ -161,5 +164,79 @@ func NewRectangle() *Rectangle {
 // 10
 ```
 
+
+```go
+package main
+
+import (
+	"fmt"
+	"bytes"
+)
+
+func NewBufferedWriterCloser() *BufferedWriterCloser {
+	return &BufferedWriterCloser{
+		buffer: bytes.NewBuffer([]byte{}),
+	}
+}
+
+func main() {
+	var wc WriterCloser = NewBufferedWriterCloser()
+	wc.Write([]byte("Hello Youtube Listners"))
+	wc.Close()	
+}
+
+type Writer interface {
+	Write([]byte) (int, error)
+}
+
+type Closer interface {
+	Close() error
+}
+
+type WriterCloser interface {
+	Writer
+	Closer
+}
+
+type BufferedWriterCloser struct {
+	buffer *bytes.Buffer
+}
+
+
+func (bwc *BufferedWriterCloser) Write(data []byte) (int, error) {
+	n, err := bwc.buffer.Write(data)
+	if err != nil {
+		return 0, err
+	}
+	
+	v := make([]byte, 8)
+	for bwc.buffer.Len() > 8 {
+		_, err := bwc.buffer.Read(v)
+		if err != nil {
+			return 0, err
+		}
+		_, err = fmt.Println(string(v))
+		if err != nil {
+			return 0, err
+		}
+	}
+	
+	return n, nil
+}
+
+func (bwc *BufferedWriterCloser) Close() error {
+	for bwc.buffer.Len() > 0 {
+		data := bwc.buffer.Next(8)
+		_, err := fmt.Println(string(data))
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+	
+  ```
+  
 # Empty interface
 
+Empyt interface is interface that doesn't have a method on it. Its created on fly.

@@ -13,9 +13,9 @@ These questions may bug you
 
 Before I answer all these questions, If you followed along with me in installation. I need you to type down this in terminal.
 
-	go env
+    go env
 
-This lists out go environment varialbles necessary for us. Among them there are a few you need to look into
+This lists out go environment varialbles necessary for us. Among them there are few you need to look into
 
 * GOPATH
 * GOROOT
@@ -40,25 +40,25 @@ Most Go programmers keep all their Go source code and dependencies in a single w
 The <b>GOPATH</b> environment variable lists places for Go to look for Go Workspaces. By default GOPATH point to location `/home/<user>/go` (home_directory/go). This should point to directory where our source code lives. We can change this to any custom location by setting GOPATH variable.
 
 ```
-	export GOPATH='<custom-location>'
+    export GOPATH='<custom-location>'
 
 For e.g
 
-	export GOPATH=$HOME/dev/go
+    export GOPATH=$HOME/dev/go
 
 ```
 We can directly execute the go program in terminal. Inorder to do that we need to set path to bin folder inside our workspace 
 
 ```
-	export PATH=$PATH:$(go env GOPATH)/bin
+    export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 These can be added inside our terminal
 
 ```
-	nano  ~/.bashrc
-		or
-	nano ~/.zshrc
+    nano  ~/.bashrc
+        or
+    nano ~/.zshrc
 ```
 
 #### GOROOT
@@ -66,7 +66,7 @@ These can be added inside our terminal
 The GOROOT environment variable point to Go's code, compiler and tooling location. This is not where our source code lives. In my linux system it point to 
 
 ```
-	GOROOT="/usr/local/go"
+    GOROOT="/usr/local/go"
 ```
 
 ## Import PATH
@@ -92,12 +92,13 @@ An e.g of folder structure
 ```
 home
 └──<linuxusername>
-    └── dev
-        └── go
-            └── src
-                └── github.com
-                    └── <username>
-                        └── hello
-                            └── hello_world.go
-
+    └── go
+        └── bin
+        └── pkg
+        └── src
+            └── github.com
+                └── <username>
+                    └── hello
+                        └── hello_world.go
+                        
 ```
