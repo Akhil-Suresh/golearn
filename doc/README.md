@@ -15,3 +15,5 @@
 13. [Pointers](pointers.md)
 14. [Functions](functions.md)
 15. [Interface](Interfaces.md)
+16. [Go Routines](goRoutine.md)
+17. [Channel](channels.md)
