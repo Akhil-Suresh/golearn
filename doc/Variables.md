@@ -2,6 +2,12 @@
 
 There are mainly three ways to declare a variable inside go
 
+1. Declaring variable by type
+2. Declaring and assigning variable in single line
+3. Compiler auto detect variable type
+
+For example
+
 1. **Declare variable by type**
 
     ```go
@@ -21,33 +27,57 @@ There are mainly three ways to declare a variable inside go
     i := 10
     ```
 
+# Declaring variables
+
+In go there are two ways to declare a variable
+1. Inside a function
+2. In package level
+
+Till now what we saw above is decalring variable inside function. Now lets see how its done in a package level.
+
 ## Declaring variable in package level
 
-We can also declare at package level meaning outside main function.
+While decalring variable at package level, we can't make use of `:=` syntax. So we have to use the full declaration syntax.
 
 ```go
 package main
 
+import "fmt"
+
 var j float32 = 65
 
 func main() {
-
+    fmt.Printf("%v, %T", j, j)
 }
+
+// OUTPUTS
+// 65, float32
 ```
-**Note:** 
-: *While declaring variable at package level, we can't let compiler figure out the type of variable. So we can stick with second way of declaring variable.*
+
+**Note:**: *While declaring variable at package level, we can't let compiler figure out the type of variable.*
 
 
 ## Declaring variable as block at package level
 
 ```go
 package main
+
+// Declaring variable by not cluttering up code with too may var keywords!
 var (
     studentFname string
     studentLname string
     studentClass int
     studentAge   int
 )
+
+// Declaring and Initializing variable at package level.
+var (
+    name string = "Akhil"
+    age int = 16
+    class string = 10
+    division   string = "A"
+)
+
 func main() {
     studentFname = "Akhil"
 }
@@ -72,8 +102,8 @@ func main() {
 }
 ```
 
-## Unused variables :skull_and_crossbones:
-***If there is unused variable in go, When the code gets compiled, Its gonna throw an error.***
+### Unused variables :X
+    If there is unused variable in go, When the code gets compiled, Its gonna throw an error.
 
 ## Variable shadowing
 
@@ -89,14 +119,46 @@ func main() {
     fmt.Println(testThis)
 }
 
+// OUTPUTS
+// 1
 ```
 
-**OUTPUTS**
-```
-1
+# Some naming conventions
+
+There are mainly two things to be taken care of.
+1. Variable visibility
+2. Naming convention.
+
+## Variable Visibility
+
+Variables at package level can be exported. Till now you must have noticed that we are only using lowercase letters for variable naming. We can also use upper case letter for variable name as well. Doing so will make it exportable.
+
+Consider the scenario below, here the scop of i is limited to package level and not outside the package.
+
+```go
+package main
+import "fmt"
+var age int = 32
+
+func main() {
+    fmt.Println(age)
+}
 ```
 
-## Some naming conventions
+We can make the value exportable by using uppercase for first letter
+
+```go
+package main
+import "fmt"
+var Age int = 32
+
+func main() {
+    fmt.Println(Age)
+}
+```
+The variable `Age` can be used inside other packages now.
+
+### Naming Convention
 
 * When you declare a variable at package level try to use upper case
 
@@ -111,7 +173,7 @@ func main() {
     var thisHTTP = "https://www.youtube.com"
     ```
 
-## Typecasting
+# Typecasting
 
 ```
     int(<variable>)
