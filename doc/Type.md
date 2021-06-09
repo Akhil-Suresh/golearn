@@ -11,16 +11,16 @@
     * String
     * Rune
 
-## Integer Types
+# Integer Types
 
-### First types are signed integers
+## First types are signed integers
 
 * int8  --> (-128-127)
 * int16 --> (-32 768 - 32 767)
 * int32 --> (-2 147 483 648 - 2 147 483 647)
 * int64 --> (-9 223 372 036 854 775 808 - 9 223 372 036 854 775 807)
 
-### Unsigned Integers
+## Unsigned Integers
 
 * unint8  --> (0-255)
 * unit16  --> (0 - 65 535)
@@ -36,9 +36,9 @@
 * complex64
 * complex32
 
-## Text Type
+# Text Type
 
-### String literal
+## String literal
 
 String in go stands for UTF8 character. So string cannot encode every type of character that's available.
 
@@ -50,22 +50,28 @@ func main() {
     s := "I am a string"
     fmt.Printf("%v, %T\n", s, s)
 }
-```
 
-**OUTPUTS**
-```
-I am a string, string
+/*
+    OUTPUTS
+    I am a string, string
+*/
 ```
 
 String can be treated like an array, or a collection of letters. That way we can get value of string at any index position starting from 0. ie.
 ```go 
-fmt.Printf("%v, %T", s[5], s[5])    // OUTPUTS: 97, unit8
+fmt.Printf("%v, %T", s[5], s[5])    
+
+// OUTPUT
+// 97, unit8
 ```
 
-Yes the above code is little confusing and here is its explanation. The string is treated as array of bytes and is immutable. We can get back the value by **type casting** it.
+Yes the above output is little confusing and here is its explanation. The string is treated as array of bytes and is immutable. We can get back the value by **type casting** it.
 
 ```go
-string(s[5])    // OUTPUTS: a
+string(s[5])    
+
+// OUTPUT
+// a
 ```
 
 Strings can be concatenated together by plus sign.
@@ -89,15 +95,18 @@ func main() {
     b := []byte(s)
     fmt.Printf("%v, %T", b, b)
 }
-```
 
-**OUTPUTS**
-```
-// [73 32 97 109 32 97 32 115 116 114 105 110 103], []uint8
+/*
+    OUTPUT
+    [73 32 97 109 32 97 32 115 116 114 105 110 103], []uint8
+*/
 ```
 
 This feature in go can be utilized when we are sending data from server to another server, or to a filesystem.
 So that we can less worry about line endings and other string related issues
+
+## Rune
+Runes are UTF-32 encoded. Alias for int32. Special methods normally required to process eg strings.Reader to ReadRune
 
 ### Rune literal (Single quote Vs Double quote)
 
@@ -111,16 +120,15 @@ func main() {
     b := 'z'
     fmt.Printf("%v, %T", r, r)
 }
+
+/*
+    OUTPUT
+    97, int32
+    122, int32
+*/
 ```
 
-**OUTPUTS**
-```
-97, int32
-122, int32
-```
 
-
-**So double quotes and single quotes matters in go code**. 
-Single quotes string are treated as **rune**. 
-
-**Unlike a string literal which is a byte. The rune is of type int32.**
+    - So double quotes and single quotes matters in go code. 
+    - Single quotes string are treated as **rune**. 
+    - Unlike a string literal which is a byte. The rune is of type int32.
