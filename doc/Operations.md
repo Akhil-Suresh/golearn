@@ -50,7 +50,7 @@ func main() {
 
     fmt.Println(a & b)  // and operator                                 0010
     fmt.Println(a | b)  // or operator                                  1111
-    fmt.Println(a ^ b)  // exclusive or operator (either of bit set)    1101
+    fmt.Println(a ^ b)  // xor exclusive or operator (either of bit set)    1101
     fmt.Println(a &^ b) // and not operator (neither of the bit set)    0000
     fmt.Println(a << 3) // left bit shifting                            01010000
     fmt.Println(a >> 3) // right bit shifting                           00000001
@@ -67,7 +67,7 @@ A single left shift multiplies a binary number by 2
 ```
 
 So five left shift of a value 3 means
-3 x 2^5^
+3 x 2^5
 
 
 ## Complex Numbers
