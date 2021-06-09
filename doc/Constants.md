@@ -8,7 +8,7 @@
 
 ## How we name our constants
 
-Unlike other language we can't name our constants in all Upper case. The problem being like discussed in variable section, Giving first letter of the word in caps will make the variable exportable. So if we are using the constant inside our function locally. This is going to create trouble.
+Unlike other language we can't name our constants in all Upper case. The problem being like discussed in variable section, Giving first letter of the word in uppercase will make the variable exportable. So if we are using the constant inside our function locally. This is going to create trouble.
 
 So we can use camel casing.
 
@@ -43,7 +43,7 @@ func main() {
 
 We can do usual addition, subtraction, multiplication, division on constant and variable of same type
 
-__We can initialize a constant by letting compiler figure out its type as well.__
+## We can initialize a constant by letting compiler figure out its type as well.
 
 ```go
 const a = 64
@@ -55,6 +55,9 @@ One of the intresting thing about this is we can do
 const a = 64
 var b int16 = 32
 fmt.Printf(a + b)
+
+// OUTPUTS
+// 96
 ```
 
 The above program will execute without an issue.
