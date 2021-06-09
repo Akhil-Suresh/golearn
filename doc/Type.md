@@ -8,6 +8,8 @@
   * Floating point
   * Complex numbers
 * Text Types
+    * String
+    * Rune
 
 ## Integer Types
 
