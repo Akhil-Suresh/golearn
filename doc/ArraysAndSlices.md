@@ -1,5 +1,7 @@
 # Arrays
 
+## Array Declaration Syntax
+
 Arrays can be declared as
 
 ```go
@@ -8,6 +10,7 @@ var device  [10]string
 var ages    [10]int16
 
 // Defining and initializing array
+// Using composite literals
 device := [3]string{ "mouse", "monitor", "keyboard" }
 
 // Defining and initializing array without defining array size
@@ -30,7 +33,7 @@ students[2] = "Akhil"
 students[0] = "Jithesh"
 fmt.Printf("%v", students)
 
-// OUTPUTS
+// OUTPUT
 // [Jithesh  Akhil]
 ```
 
@@ -39,13 +42,15 @@ We already know an array's size, but there may be situation,
 where we need to revaluate it.
 
 ```go
-len(students)
+fmt.Println(len(students))
 
-//Outputs
+// OUTPUT
 // 3
 ```
 
-Arrays are considered values in go. so when you copy an array we are actually copying value, Not underlying values, unlike other languages.
+## ARRAYS ARE CONSIDERED AS VALUES IN GO. 
+
+so when you copy an array we are actually copying value not the reference to array, unlike other languages.
 
 ```go
 package main
@@ -64,9 +69,7 @@ func main() {
 // [1 2 3]
 // [1 10 3]
 ```
-
-The problem with above implementation arises when we have millions of data, This is then going to slow our program down.
-This behavior can be changed so that the copying array is a reference to main array. This can be done using address of operator.
+Eventhough this looks cool, there is a catch with this approach, when we have millions of data to be processed this is going to slow down our program. One of the good thing with go is that go developers have actually thought about this and there is a way to reference array rather than copying it. This can be done using `address of &` operator.
 
 ```go
 package main
@@ -86,7 +89,7 @@ func main() {
 // [1, 10, 3]
 ```
 
-## Slices
+# Slices
 
 Slices are very similar to array, so everything we do with array can be done with slices as well with some exceptions. Slices can be initialized as below.
 
@@ -138,7 +141,9 @@ func main() {
 
 ```
 
-Unlike arrays slices are reference type data. Which means if we assign a slice to another both will point to same underlying data.
+    UNLIKE ARRAY SLICES ARE REFERENCE TYPES. 
+
+Which means if we assign a slice to another both will point to same underlying data.
 
 ```go
 package main
@@ -212,6 +217,15 @@ func main() {
   fmt.Printf("Length: %v\n", len(a))
   fmt.Printf("Capacity: %v\n", cap(a))
 }
+/*
+
+  OUTPUT
+
+  [0 0 0]
+  Length: 3
+  Capacity: 3
+
+*/
 ```
 
 We know that slice is just __slice__ of an __array__. So by using make function we can actually define the size of the main array itself. It can be defined as third parameter to the array
@@ -227,6 +241,16 @@ func main() {
   fmt.Printf("Length: %v\n", len(a))
   fmt.Printf("Capacity: %v\n", cap(a))
 }
+
+/* 
+
+OUTPUT
+
+[0 0 0]
+Length: 3
+Capacity: 100
+
+*/
 ```
 
 ### Appending data to an array
@@ -260,10 +284,10 @@ func main() {
   fmt.Printf("Length: %v\n", len(a))
   fmt.Printf("Capacity: %v\n", cap(a))
 }
-```
 
-**OUTPUTS**
-```
+/*
+OUTPUT
+
 []
 Length: 0
 Capacity: 0
@@ -279,4 +303,6 @@ Capacity: 6
 [1 2 3 4 5 6 7 8 9]
 Length: 9
 Capacity: 12
+
+*/
 ```

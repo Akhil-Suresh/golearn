@@ -5,7 +5,7 @@ Most language were designed with born with single processor core in mind. When c
 ## BASICS
 
 when we are working with channels we are almost possibly working in context of go routines the reason being, Channels are designed to synchronize data flow between go routines. Channels are define as `ch := make(chan int)`. 
-So when we create a channel it is stictly typed so int channel can recive only int data and likewise.
+So when we create a channel it is strictly typed so int channel can receive only int data and likewise.
 
 
 ```go
@@ -31,11 +31,9 @@ func main() {
 	}()
 	wg.Wait()
 }
-```
 
-**OUTPUT**
-```
-42
+// OUTPUT
+// 42
 ```
 
 ## RESTRICTING DATA FLOW

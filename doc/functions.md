@@ -287,7 +287,7 @@ As we have already discussed there may arise scenarios where error occur in our 
 
 There is a standard way in go to handle such non deadly issues, By non deadly I mean the errors that doesn't put the executing function to halt.
 
-That is by returning the error from out custom function.
+That is by returning the error from our custom function.
 
 ```go
 package main
@@ -510,6 +510,8 @@ func main() {
   }
   g.greet()
   g.greetMeAgain()
+
+  // This is to prove that g is not passed in as reference.
   fmt.Println(g.name)
 }
 
@@ -550,6 +552,8 @@ func main() {
   }
   g.greet()
   g.greetMeAgain()
+
+  // Making use of pass by reference
   fmt.Println(g.name)
 }
 
@@ -565,12 +569,12 @@ func (f greeter) greet() {
 
 func (k *greeter) greetMeAgain(){
   fmt.Println("Greet me again", k.greeting, k.name)
-  k.name = "fck its changed"
+  k.name = "oh boy! its changed"
 }
 
 // OUTPUTS
 // Hello Go
 // Greet me again Hello Go
-// fck its changed
+// oh boy! its changed
 ```
 

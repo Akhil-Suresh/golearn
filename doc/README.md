@@ -17,3 +17,8 @@
 15. [Interface](Interfaces.md)
 16. [Go Routines](goRoutine.md)
 17. [Channel](channels.md)
+
+Advanced Go Concepts
+
+1. [init function](InitFunction.md)
+2. [make vs new](make_vs_new.md)

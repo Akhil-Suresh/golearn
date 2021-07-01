@@ -173,16 +173,9 @@ import (
 	"bytes"
 )
 
-func NewBufferedWriterCloser() *BufferedWriterCloser {
-	return &BufferedWriterCloser{
-		buffer: bytes.NewBuffer([]byte{}),
-	}
-}
-
-func main() {
-	var wc WriterCloser = NewBufferedWriterCloser()
-	wc.Write([]byte("Hello Youtube Listners"))
-	wc.Close()	
+type WriterCloser interface {
+	Writer
+	Closer
 }
 
 type Writer interface {
@@ -193,15 +186,23 @@ type Closer interface {
 	Close() error
 }
 
-type WriterCloser interface {
-	Writer
-	Closer
-}
-
 type BufferedWriterCloser struct {
 	buffer *bytes.Buffer
 }
 
+func NewBufferedWriterCloser() *BufferedWriterCloser {
+	return &BufferedWriterCloser{
+		buffer: bytes.NewBuffer([]byte{}),
+	}
+}
+
+func main() {
+	// This is an community recommended way for initializing interface
+	// Here we make use of a function to return struct.
+	var wc WriterCloser = NewBufferedWriterCloser()
+	wc.Write([]byte("Hello Github Readers"))
+	wc.Close()	
+}
 
 func (bwc *BufferedWriterCloser) Write(data []byte) (int, error) {
 	n, err := bwc.buffer.Write(data)

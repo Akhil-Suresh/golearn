@@ -22,10 +22,10 @@ func sayHello() {
 Here *sayHello* function will execute as go Routine. So basically putting a *go* keyword infront of function call will make go to spin off a **green thread** and run the **sayHello** inside that green thread.
 
 ### Threads
-In most programming language use os threads what that means is they got individual function call stack  dedicated to execution of whatever code is handed to that thread. Traditionally these tend to be very very large they have around 1MB of RAM. They take quite a bit of time for the application to setup so you want to be conservative about how you use your threads.
+In most programming language use `os threads` what that means is they got individual function call stack  dedicated to execution of whatever code is handed to that thread. Traditionally these tend to be very very large they have around 1MB of RAM. They take quite a bit of time for the application to setup so you want to be conservative about how you use your threads.
 
 Green threads
-Instead of creating these very massive heavy overhead threads we are gonna create abstraction of the thread called go routine. Inside go runtime we got a scheduler to map these go routine on to these os threads for period of time and the scheduler will take turns with evey cpu threads that is available and assign different go routines a certain amount of processing time on the threads so we don't have to interact with low level threads directly we are interacting with high level go routine. HTe advantage of that is since we have the abstraction of go routine we can start with  very very small stack spaces since they can be reallocated very very quickly and so they are very cheap to create and destroy. So its not uncommon in a go application to see thousands or tens of thousands of go routine running at same time and the application will have no problem with it at all. SO when we compare with other language whick uses os tnreads that have 1MD overheads there is no way we can go along with ten thousands threads in a environment like that.
+Instead of creating these very massive heavy overhead threads we are gonna create abstraction of the thread called go routine. Inside go runtime we got a scheduler to map these go routine on to these os threads for period of time and the scheduler will take turns with evey cpu threads that is available and assign different go routines a certain amount of processing time on the threads so we don't have to interact with low level threads directly we are interacting with high level go routine. The advantage of that is since we have the abstraction of go routine we can start with  very very small stack spaces since they can be reallocated very very quickly and so they are very cheap to create and destroy. So its not uncommon in a go application to see thousands or tens of thousands of go routine running at same time and the application will have no problem with it at all. So when we compare with other language which uses os threads that have 1MB overheads there is no way we can go along with ten thousands threads in a environment like that.
 
 
 ## The Catch
@@ -116,7 +116,7 @@ func main() {
 GoodBye!
 ```
 
-huh?? what happened? Well what happened is that even though our go routine is called when value of msg is Hello when the go routine is about to print those message into io the value got changed by our main to GoodBye!
+huh?? what happened? Well what happened is that even though our go routine is called when value of msg is Hello when the go routine is about to print those message into stdout the value got changed by our main to GoodBye!
 
 So effectively a race condition is happening here.
 
@@ -226,11 +226,11 @@ Hello #6
 Hello #5 
 ```
 
-Each time we execute above program the value will get changed. The reason for such a behaviour is that each go routine is rasing to finish its task since its all run in parallel.
+Each time we execute above program the value will get changed. The reason for such a behaviour is that each go routine is racing to finish its task since they all run in parallel.
 
 So the solution to this is to synchronise these two functions together.
 
-This can be acheived by Mutex. Mutex is basically a lock the application is going to honour. A simple Mutex is locked or unlocked. So if a Mutex is locked and something is trying to manipulate its value, the something has to wait till the Mutex is in unlocked state so that the something can obtain the Mutex lock itself and perform the alteration. So what we can do with it is we can protect parts of our code so that only one entity can perfom alteration to our code at a time and typically why we use it is to protect out data.
+This can be acheived by Mutex. Mutex is basically a lock the application is going to honour. A simple Mutex is locked or unlocked. So if a Mutex is locked and something is trying to manipulate its value, the something has to wait till the Mutex is in unlocked state so that the something can obtain the Mutex lock itself and perform the alteration. So what we can do with it is we can protect parts of our code so that only one entity can perfom alteration to our code at a time and typically why we use it is to protect our data.
 
 with RWMutex as many things can read our data but only one thing can write to that data, and if anything is reading we can't write to it at all.
 

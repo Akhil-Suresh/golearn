@@ -2,12 +2,36 @@
 
 Map as the name suggests is the map between the key value pair.
 
+## Declaration
+
+Map can be initialized in the following ways.
+
 ```go
 package main
 
 import "fmt"
 
 func main() {
+  // First Method
+	var polygon map[string]int = map[string]int{
+		"triangle": 3,
+		"rectangle": 4,
+		"pentagon": 5,
+		"hexagon": 6,
+	} 
+	fmt.Println(polygon)
+  
+  // Second Method
+  var Animals map[string]int
+	Animals = map[string]int{
+		"Cat": 4,
+		"Cow": 4,
+		"Horse": 4,
+		"Zebra": 4,
+	} 
+	fmt.Println(Animals)
+
+  // Third Method
   shapeEdgeMap := map[string]int{
     "Triangle": 3,
     "Square":   4,
@@ -17,15 +41,19 @@ func main() {
   }
   fmt.Println(shapeEdgeMap)
   fmt.Printf("Hexagon has %v sides", shapeEdgeMap["Hexagon"])
+
 }
 
 /*
-  map[Heptagon:7 Hexagon:6 Pentagon:5 Square:4 Triangle:3]
-  Hexagon has 6 sides
+OUTPUT
+map[hexagon:6 pentagon:5 rectangle:4 triangle:3]
+map[Cat:4 Cow:4 Horse:4 Zebra:4]
+map[Heptagon:7 Hexagon:6 Pentagon:5 Square:4 Triangle:3]
+Hexagon has 6 sides
 */
 ```
 
-We can make use of the **make** keyword
+### Using **make** keyword
 
 ```go
 package main
@@ -50,7 +78,9 @@ We can add data to the Map with similar syntax
 shapeEdgeMap["Octagon"] = 8
 ```
 
-The slice or array return the data in the order we add data to it. But Map is little different. Map doesn't guarantee any order.
+__NOTE:__
+
+    The slice or array return the data in the order we add data to it. But Map is little different. Map doesn't guarantee any order.
 
 ```go
 package main
@@ -76,6 +106,7 @@ func main() {
   map[Heptagon:7 Hexagon:6 Octagon:8 Pentagon:5 Square:4 Triangle:3]
 */
 ```
+## Delete Operation
 
 We can delete the data from the map using __delete__ method
 
@@ -90,11 +121,11 @@ shapeEdgeMap["Pentagon"]
 // OUTPUTS
 // 0
 ```
-This is what happens with maps, By using maps when we try to return value for the key thats not in the map it returns 0,
+
+## comma ok syntax
+By using maps when we try to return value for the key thats not in the map it returns 0,
 
 This can be checked by
-
-comma ok syntax
 
 ```go
 checkValue, ok := shapeEdgeMap["Enneagon"]
@@ -108,6 +139,7 @@ OUTPUTS
 
 So by checking the value of the ok we can determine the value exits in map or not.
 
+## Length of map
 We can get the length of the map by the len function.
 
 ```go
@@ -229,8 +261,7 @@ import "fmt"
 
 
 func main() {
-  anEmployee := struct{name string}{name: "Akhil"}
-	fmt.Println(anEmployee) 
+  anEmployee := b
 }
 ```
 
