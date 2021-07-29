@@ -301,3 +301,73 @@ func (bwc *BufferedWriterCloser) Close() error {
 # Empty interface
 
 Empyt interface is interface that doesn't have a method on it. Its created on fly.
+
+
+# Understanding interface by example
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+
+type Bird interface{
+    walk() string
+    fly() string
+}
+
+
+// Now let's define some Birds
+type Ostrich struct {}
+
+
+func (c Ostrich) walk() string {
+    return  "Can Walk"
+}
+
+
+func (c Ostrich) fly() string {
+    return "Can't Fly"
+}
+
+
+type Crow struct{}
+func (c Crow) walk() string {
+    return "Can Walk"
+}
+
+
+func (c Crow) fly() string {
+    return "Can Fly"
+}
+
+
+// Since both implements Bird interface
+
+
+func showBirdProperties(anybird Bird) {
+    fmt.Println(anybird.walk())
+    fmt.Println(anybird.fly())
+}
+
+
+func main() {
+    ostrich := Ostrich{}
+    crow := Crow{}
+
+
+    showBirdProperties(ostrich)
+    showBirdProperties(crow)
+}
+
+/*
+OUTUPUTS
+Can Walk
+Can't Fly
+Can Walk
+Can Fly
+*/
+
+```
