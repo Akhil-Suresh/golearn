@@ -16,7 +16,7 @@ Interfaces are type just like struct or other type aliases.
 
 Interface is defined as:
 
-`type <InterfaceName> interface`
+	type <InterfaceName> interface
 
 For instance:
 
@@ -31,6 +31,66 @@ One thing we can notice in the definition is that unlike struct (where we define
 So basically interfaces don't describe data just like struct, But it defines behaviour. 
 
 Inside the main function we can define an interface and It is the responsibility of the interface to decide on what to do with the value we provide into the method.
+
+Let's explain this with a simple example.....
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+// Shape interface we can see here that 
+// Shape defines a behaviour so any type that is implementing this
+// interface should have area of function that returns float64
+type Shape interface {
+	area()(float64, error)
+}
+
+type Rectangle struct {
+	length float64
+	breadth float64
+}
+
+type Square struct {
+	side float64
+}
+
+func getArea(s Shape) float64 {
+	area, err := s.area()
+	if err != nil {
+		fmt.Println("Something bad happened!", err)
+	}
+	return area
+}
+
+
+func main() {
+	// Here we can see that both have different settings.
+	rect := &Rectangle{ length: 2.0, breadth: 4.0 }
+	square := &Square{side: 4.0}
+	
+	// No matter what 
+	fmt.Println(getArea(rect))
+	fmt.Println(getArea(square))
+}
+
+func (rect *Rectangle) area()(float64, error){
+	if (rect.length == 0.0) || (rect.breadth == 0.0) {
+		return 0.0, fmt.Errorf("Please define length and breadth")
+	}
+	return rect.length * rect.breadth, nil
+}
+
+func (sq *Square) area()(float64, error){
+	return sq.side * sq.side, nil
+}
+```
+
+
+
+
 
 
 ```go
